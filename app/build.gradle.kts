@@ -8,9 +8,11 @@ android {
     defaultConfig {
         applicationId = "com.lord.virtualphone"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "0.1.0"
+        // targetSdk 28: Android 10+ blocks exec() from app data dir for newer targets.
+        // QEMU binary must be executable, so we stay on 28 for the backend PoC.
+        targetSdk = 28
+        versionCode = 2
+        versionName = "0.2.0"
     }
     buildFeatures { compose = true }
     composeOptions { kotlinCompilerExtensionVersion = "1.5.14" }
@@ -19,6 +21,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
+    packaging { jniLibs { useLegacyPackaging = true } }
 }
 dependencies {
     implementation(platform("androidx.compose:compose-bom:2024.06.00"))

@@ -18,10 +18,11 @@ data class DeviceProfile(
     val audio: String,
     val bluetooth: String,
     val sensors: String,
-    val buildProps: Map<String, String>
+    val buildProps: Map<String, String>,
+    val enabled: Boolean = true
 )
 
-// NOTE: Ye virtual identity hai, physical host hardware nahi.
+// NOTE: Ye virtual device identity hai, physical host hardware nahi.
 object DeviceProfiles {
     val all = listOf(
         DeviceProfile("redmi_y2", "Xiaomi", "Redmi Y2", "ysl", "8.1.0", 27,
@@ -33,11 +34,11 @@ object DeviceProfiles {
             "arm64-v8a", "Snapdragon 636 (8x Kryo 260)", 4, 64, "1080x2160", 403,
             "Adreno 509", "12MP + 5MP rear, 13MP front", "Speaker + mic", "Bluetooth 5.0",
             "Accelerometer, Gyroscope, Proximity, Light, Compass",
-            mapOf("ro.product.model" to "Redmi Note 5", "ro.product.device" to "whyred")),
+            mapOf("ro.product.model" to "Redmi Note 5", "ro.product.device" to "whyred"), enabled = false),
         DeviceProfile("oneplus_3t", "OnePlus", "OnePlus 3T", "oneplus3", "6.0.1", 23,
             "arm64-v8a", "Snapdragon 821 (4x Kryo)", 6, 64, "1080x1920", 380,
             "Adreno 530", "16MP rear, 16MP front", "Speaker + mic", "Bluetooth 4.2",
             "Accelerometer, Gyroscope, Proximity, Light, Compass",
-            mapOf("ro.product.model" to "ONEPLUS A3010", "ro.product.device" to "OnePlus3T"))
+            mapOf("ro.product.model" to "ONEPLUS A3010", "ro.product.device" to "OnePlus3T"), enabled = false)
     )
 }
